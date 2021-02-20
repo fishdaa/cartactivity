@@ -48,21 +48,21 @@ const items = [
     },
     {
         id: 8,
-        name: "",
+        name: "Oppo F17",
         image: "img8.jpg",
-        price: ""
+        price: "15656.20"
     },
     {
         id: 9,
-        name: "",
+        name: "Huawei nova 8 SE",
         image: "img9.jpg",
-        price: ""
+        price: "23076.15"
     },
     {
         id: 10,
-        name: "",
+        name: "vivo V20 2021",
         image: "img10.jpg",
-        price: ""
+        price: "19949.50"
     }
 ]
 
