@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderItems();
     setInitialCart();
     setProducts();
+    utils.updateHeaderCartItems();
 });
 const cart = [];
 

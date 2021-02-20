@@ -2,6 +2,7 @@ import * as utils from "./utils.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     loadItem();
+    utils.updateHeaderCartItems();
 });
 
 function loadItem() {

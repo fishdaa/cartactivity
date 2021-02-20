@@ -87,12 +87,16 @@ export function addItemtoCartEvent(qtyTxtBox) {
             cart[i].qty = qty;
             localStorage.setItem("cart", JSON.stringify(cart));
             updatedCart = true;
-            alert("updated cart!\ncheck cart for the receipt");
+            if(confirm("updated cart\ndo you want to checkout now?")) {
+                openCart();
+            } else location.reload();
         }  
     }
     if(updatedCart === false){
         addItemToCart(qtyId, qty);
-        alert("added item to cart\ncheck cart for the receipt");
+        if(confirm("added item to cart\ndo you want to checkout now?")) {
+            openCart();
+        } else location.reload();
     }
 }
 
@@ -132,4 +136,17 @@ export function getItemById(id) {
 
 export function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function openCart() {
+    open("../cart.html", "_parent");
+}
+
+export function updateHeaderCartItems() {
+    const el = document.getElementById("header-cart");
+    const cart = getCartItems();
+
+    const sub = document.createElement("sub");
+    sub.innerHTML = ` (${cart.length})`;
+    el.appendChild(sub);
 }
