@@ -139,7 +139,7 @@ export function numberWithCommas(x) {
 }
 
 function openCart() {
-    open("../cart.html", "_parent");
+    open("/cartactivity/cart.html", "_parent");
 }
 
 export function updateHeaderCartItems() {
