@@ -14,7 +14,7 @@ function loadItem() {
 
     const itemImg = utils.createItemImgEl(selectedId, item.name, utils.imgPath + item.image);
     const itemName = utils.createItemNameEl(selectedId, item.name);
-    const itemPrice = utils.createItemPriceEl(selectedId, item.price);
+    const itemPrice = utils.createItemPriceEl(selectedId, utils.numberWithCommas(item.price));
     const qtyTxtBox = utils.createQtyTxtBox(selectedId, 1);
     const btnAddCart = utils.createAddCartBtnEl(selectedId);
 

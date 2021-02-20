@@ -26,9 +26,19 @@ function renderItems() {
         itemdiv.setAttribute("id", "item-" + items[i].id);
         itemdiv.setAttribute("class", "prod-items");
 
-        const itemImg = utils.createItemImgEl(items[i].id, items[i].name, utils.imgPath + items[i].image);
-        const itemName = utils.createItemNameEl(items[i].id, items[i].name);
-        const itemPrice = utils.createItemPriceEl(items[i].id, items[i].price);
+        const itemImg = utils.createItemImgEl(
+            items[i].id, 
+            items[i].name, 
+            utils.imgPath + items[i].image
+        );
+        const itemName = utils.createItemNameEl(
+            items[i].id, 
+            items[i].name
+        );
+        const itemPrice = utils.createItemPriceEl(
+            items[i].id, 
+            utils.numberWithCommas(items[i].price)
+        );
         const addProdLink = utils.createAnchorEl(items[i].id);
 
         addProdLink.appendChild(itemName);

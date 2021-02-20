@@ -3,18 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/cart.css">
     <script type="module" src="./scripts/cart.js"></script>
     <title>Cart</title>
 </head>
 <body>
-    <div class="header"><div id="cart"><a href="./index.html">Products</a></div></div>
-    <div id="cart">
-        <div id=cart-header>
-            <div id="cart-item">Item</div>
-            <div id="cart-price">Price</div>
-            <div id="cart-Qty">Qty</div>
-            <div id="cart-subtotal">Subtotal</div>
+    <div class="header">
+        <div id="cart-header">
+            <a href="./index.html">Products</a>
         </div>
     </div>
+    <div id="cart">
+        <span id="cart-item"><strong>Item</strong></span>
+        <span id="cart-price"><strong>Price</strong></span>
+        <span id="cart-Qty"><strong>Qty</strong></span>
+        <span id="cart-subtotal"><strong>Subtotal</strong></span>
+    </div>
+    <div id="cart-total">
+        <strong>Product Total: </strong>
+        <strong id="cart-total-price"></strong>
+    </div>
+    <button id="cart-print">Print Receipt</button>
 </body>
 </html>

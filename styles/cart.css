@@ -1,0 +1,12 @@
+#cart {
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr 2fr;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+}
+
+#cart > span {
+    padding: 8px 4px;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+}
