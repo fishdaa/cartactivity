@@ -43,7 +43,7 @@ function renderItems() {
         const addProdLink = utils.createAnchorEl(items[i].id);
 
         addProdLink.appendChild(itemName);
-        addProdLink.setAttribute("href", "./productview.html");
+        addProdLink.setAttribute("href", "/productview.html");
 
         prod.appendChild(itemdiv);
         itemdiv.appendChild(itemImg);
