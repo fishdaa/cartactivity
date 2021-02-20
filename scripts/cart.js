@@ -1,15 +1,10 @@
+import * as utils from "./utils.js";
+
 document.addEventListener("DOMContentLoaded", () => {
     loadCart();
 });
 
 let cart = [];
-
-function loadCart() {
-    const storedCart = localStorage.getItem("cart");
-    cart = JSON.parse(storedCart);
-    console.log(cart);
-
-}
 
 function renderCart() {
     const cartdiv = document.getElementById("cart");

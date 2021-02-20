@@ -6,8 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setInitialCart();
     setProducts();
 });
-
-const imgPath = "./images/";
 const cart = [];
 
 function setInitialCart() {
@@ -28,27 +26,22 @@ function renderItems() {
         itemdiv.setAttribute("id", "item-" + items[i].id);
         itemdiv.setAttribute("class", "prod-items");
 
-        const itemImg = utils.createItemImgEl(items[i].id, items[i].name, imgPath + items[i].image);
+        const itemImg = utils.createItemImgEl(items[i].id, items[i].name, utils.imgPath + items[i].image);
         const itemName = utils.createItemNameEl(items[i].id, items[i].name);
         const itemPrice = utils.createItemPriceEl(items[i].id, items[i].price);
-        const qtyTxtBox = utils.createQtyTxtBox(items[i].id, 1);
-        const btnAddCart = utils.createAddCartBtnEl(items[i].id);
+        const addProdLink = utils.createAnchorEl(items[i].id);
 
-        const qtydiv = utils.createQtyContainer();
-        qtydiv.appendChild(qtyTxtBox);
+        addProdLink.appendChild(itemName);
+        addProdLink.setAttribute("href", "../productview.html");
 
         prod.appendChild(itemdiv);
         itemdiv.appendChild(itemImg);
-        itemdiv.appendChild(itemName);
+        itemdiv.appendChild(addProdLink);
         itemdiv.appendChild(itemPrice);
-        itemdiv.appendChild(qtydiv);
-        itemdiv.appendChild(btnAddCart);
 
         // adding event listeners
-        btnAddCart.addEventListener("click", () => {
-            utils.addItemtoCartEvent(
-                "qty-text-" + items[i].id
-            );
+        addProdLink.addEventListener("click", () => {
+            utils.setsSelectedItem(items[i].id);
         });
     }
 }

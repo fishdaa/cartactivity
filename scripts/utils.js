@@ -1,4 +1,5 @@
 export const currency = "₱";
+export const imgPath = "./images/";
 
 export function createItemImgEl(id, name, imgSrc) {
     const itemImg = document.createElement("img");
@@ -7,12 +8,6 @@ export function createItemImgEl(id, name, imgSrc) {
     itemImg.setAttribute("src", imgSrc);
     itemImg.setAttribute("alt", name);
     return itemImg;
-}
-
-export function createAnchorEl(id) {
-    const link = document.createElement("a");
-    link.setAttribute("id", "item-link");
-    link.
 }
 
 export function createItemNameEl(id, name) {
@@ -40,24 +35,21 @@ export function createAddCartBtnEl(id) {
     return addBtn;
 }
 
-export function createQtyContainer() {
-    const qtydiv = document.createElement("div");
-    qtydiv.setAttribute("class", "qty-div");
-    const qtyText = document.createElement("p");
-    qtyText.setAttribute("class", "qty-text")
-    qtyText.innerText = "Qty";
-    qtydiv.appendChild(qtyText);
-    return qtydiv;
-}
-
-
 export function createQtyTxtBox(itemId, itemQty) {
+    const lblQty = document.createElement("label");
+    lblQty.setAttribute("class", "qty-text");
+    lblQty.setAttribute("for", "qty");
+    lblQty.textContent = "Qty: ";
+
     const qtyTxtBox = document.createElement("input");
     qtyTxtBox.setAttribute("type", "text");
     qtyTxtBox.setAttribute("id", "qty-text-" + itemId);
     qtyTxtBox.setAttribute("data-qty-id", itemId);
-    qtyTxtBox.innerText = itemQty;
-    return qtyTxtBox;
+    qtyTxtBox.setAttribute("name", "qty");
+    qtyTxtBox.value = itemQty;
+
+    lblQty.appendChild(qtyTxtBox);
+    return lblQty;
 }
 
 export function addItemToCart(itemId, qty) {
@@ -95,11 +87,45 @@ export function addItemtoCartEvent(qtyTxtBox) {
             cart[i].qty = qty;
             localStorage.setItem("cart", JSON.stringify(cart));
             updatedCart = true;
-            alert("updated cart!");
+            alert("updated cart!\ncheck cart for the receipt");
         }  
     }
     if(updatedCart === false){
         addItemToCart(qtyId, qty);
-        alert("added item to cart");
+        alert("added item to cart\ncheck cart for the receipt");
+    }
+}
+
+export function nextProduct(currentId) {
+    const items = localStorage.getItem("items");
+    items = JSON.parse(items);
+}
+
+export function createNextProductEl() {
+    const el = document.createElement("button");
+    el.setAttribute("id", "next-item");
+    el.innerHTML("Next Item");
+    return el;
+}
+
+export function setsSelectedItem(id) {
+    localStorage.setItem("selectedItem", id);
+}
+
+export function createAnchorEl(id){
+    const el = document.createElement("a");
+    el.setAttribute("id", "item-link-" + id);
+    el.setAttribute("class", "item-link");
+    return el;
+}
+
+export function getItemById(id) {
+    let items = localStorage.getItem("items");
+    items = JSON.parse(items);
+
+    for (let i=0; i<items.length; i++) {
+        if(items[i].id === id){
+            return items[i];
+        }
     }
 }
