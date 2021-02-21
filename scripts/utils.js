@@ -84,10 +84,10 @@ export function addItemtoCartEvent(qtyTxtBox) {
 
     for (let i=0; i<cart.length; i++){
         if(cart[i].itemId === qtyId){
+            updatedCart = true;
             if(confirm("updated cart\ndo you want to checkout now?")) {
                 cart[i].qty = qty;
                 localStorage.setItem("cart", JSON.stringify(cart));
-                updatedCart = true;
                 openCart();
             } else location.reload();
         }  
