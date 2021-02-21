@@ -85,16 +85,16 @@ export function addItemtoCartEvent(qtyTxtBox) {
     for (let i=0; i<cart.length; i++){
         if(cart[i].itemId === qtyId){
             updatedCart = true;
+            cart[i].qty += qty;
+            localStorage.setItem("cart", JSON.stringify(cart));
             if(confirm("updated cart\ndo you want to checkout now?")) {
-                cart[i].qty = qty;
-                localStorage.setItem("cart", JSON.stringify(cart));
                 openCart();
             } else location.reload();
         }  
     }
     if(updatedCart === false){
+        addItemToCart(qtyId, qty);
         if(confirm("added item to cart\ndo you want to checkout now?")) {
-            addItemToCart(qtyId, qty);
             openCart();
         } else location.reload();
     }
