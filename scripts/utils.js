@@ -93,8 +93,8 @@ export function addItemtoCartEvent(qtyTxtBox) {
         }  
     }
     if(updatedCart === false){
-        addItemToCart(qtyId, qty);
         if(confirm("added item to cart\ndo you want to checkout now?")) {
+            addItemToCart(qtyId, qty);
             openCart();
         } else location.reload();
     }
