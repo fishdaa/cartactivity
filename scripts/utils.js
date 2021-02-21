@@ -78,8 +78,6 @@ export function addItemtoCartEvent(qtyTxtBox) {
     const qtyId = parseInt(qtyEl.getAttribute("data-qty-id"));
 
     let cart = getCartItems();
-    console.log(cart);
-
     let updatedCart = false
 
     for (let i=0; i<cart.length; i++){
