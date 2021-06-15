@@ -38,3 +38,19 @@ function getSelectedItemId(){
     const item = localStorage.getItem("selectedItem");
     return parseInt(item);
 }
+
+function displayDetails() {
+    const item = getSelectedItemId();
+
+    const model = document.getElementById("p-model");
+    const disp = document.getElementById("p-disp");
+    const body = document.getElementById("p-body");
+    const cpu = document.getElementById("p-cpu");
+    const mem = document.getElementById("p-mem");
+    const cam = document.getElementById("p-cam");
+    const bat = document.getElementById("p-bat");
+    const comms = document.getElementById("p-comms");
+    const misc = document.getElementById("p-misc");
+
+
+}
