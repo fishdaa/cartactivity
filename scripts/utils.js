@@ -147,7 +147,9 @@ export function updateHeaderCartItems() {
 
 export function getLink() {
     const currentPage = window.location.href;
-    const slashLocation = currentPage.slice("/", currentPage.length);
+    console.log(currentPage);
+    const slashLocation = currentPage.lastIndexOf("/", currentPage.length);
+    console.log(slashLocation);
     const splitLink = currentPage.split(
         currentPage.slice(slashLocation, currentPage.length), 
         currentPage.length
@@ -158,5 +160,6 @@ export function getLink() {
 
 export function openPage(page) {
     const splitLink = getLink();
+    console.log(splitLink + page);
     open(splitLink + page, "_parent");
 }
