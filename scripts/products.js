@@ -43,8 +43,8 @@ function renderItems() {
         const addProdLink = utils.createAnchorEl(items[i].id);
 
         addProdLink.appendChild(itemName);
-        
-        const link = replaceLink("/productview.html");
+
+        const link = replaceLink("productview.html");
         addProdLink.setAttribute("href", link);
 
         prod.appendChild(itemdiv);
@@ -75,7 +75,7 @@ function replaceLink(page) {
     if (index) {
         return link + page;
     } else {
-        return window.location.href + page;
+        return `${window.location.href}/${page}`;
     }
     
 }
