@@ -43,8 +43,9 @@ function renderItems() {
         const addProdLink = utils.createAnchorEl(items[i].id);
 
         addProdLink.appendChild(itemName);
-        const link = utils.getLink();
-        addProdLink.setAttribute("href", link + "/productview.html");
+        
+        const link = replaceLink("/productview.html");
+        addProdLink.setAttribute("href", link);
 
         prod.appendChild(itemdiv);
         itemdiv.appendChild(itemImg);
@@ -56,4 +57,25 @@ function renderItems() {
             utils.setsSelectedItem(items[i].id);
         });
     }
+}
+
+
+function isindex() {
+    const link = window.location.href
+    if (link.includes("index.html")) {
+        return true;
+    }
+    return false;
+}
+
+function replaceLink(page) {
+    const index = isindex();
+    const link = utils.getLink();
+
+    if (index) {
+        return link + page;
+    } else {
+        return window.location.href + page;
+    }
+    
 }
