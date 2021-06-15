@@ -73,9 +73,9 @@ function replaceLink(page) {
     const link = utils.getLink();
 
     if (index) {
-        return link + page;
+        return `${link}/${page}`;
     } else {
-        return `${window.location.href}/${page}`;
+        return `${window.location.href}${page}`;
     }
     
 }
