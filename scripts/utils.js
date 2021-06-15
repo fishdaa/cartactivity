@@ -86,14 +86,14 @@ export function addItemtoCartEvent(qtyTxtBox) {
             cart[i].qty += qty;
             localStorage.setItem("cart", JSON.stringify(cart));
             if(confirm("updated cart\ndo you want to checkout now?")) {
-                openCart();
+                openPage("/cart.html");
             } else location.reload();
         }  
     }
     if(updatedCart === false){
         addItemToCart(qtyId, qty);
         if(confirm("added item to cart\ndo you want to checkout now?")) {
-            openCart();
+            openPage("/cart.html");
         } else location.reload();
     }
 }
@@ -136,10 +136,6 @@ export function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function openCart() {
-    open("/cartactivity/cart.html", "_parent");
-}
-
 export function updateHeaderCartItems() {
     const el = document.getElementById("header-cart");
     const cart = getCartItems();
@@ -147,4 +143,20 @@ export function updateHeaderCartItems() {
     const sub = document.createElement("sub");
     sub.innerHTML = ` (${cart.length})`;
     el.appendChild(sub);
+}
+
+export function getLink() {
+    const currentPage = window.location.href;
+    const slashLocation = currentPage.slice("/", currentPage.length);
+    const splitLink = currentPage.split(
+        currentPage.slice(slashLocation, currentPage.length), 
+        currentPage.length
+    )
+    console.log(splitLink[0]);
+    return splitLink[0];
+}
+
+export function openPage(page) {
+    const splitLink = getLink();
+    open(splitLink + page, "_parent");
 }
