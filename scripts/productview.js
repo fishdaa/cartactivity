@@ -66,11 +66,11 @@ function displayDetails() {
     bat.innerText = item.battery;
     os.innerText = item.os;
     comms.innerText = `Network: ${item.comms.network}
-                        Wlan: ${item.comms.wlan}
+                        WLAN: ${item.comms.wlan}
                         Bluetooth: ${item.comms.bluetooth}
-                        GPS: ${item.comms.gps} 
+                        GPS: ${item.comms.gps}
                         NFC: ${item.comms.nfc}
-                        USB: ${item.comms.usb}   
+                        USB: ${item.comms.usb}
                     `;
     misc.innerText = `${Object.keys(item.misc).map((key) => {
                             return `${item.misc[key]}`           
