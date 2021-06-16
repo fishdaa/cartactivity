@@ -35,7 +35,7 @@ export function createAddCartBtnEl(id) {
     return addBtn;
 }
 
-export function createQtyTxtBox(itemId, itemQty) {
+export function createQtyTxtBox(itemQty) {
     const lblQty = document.createElement("label");
     lblQty.setAttribute("class", "qty-text");
     lblQty.setAttribute("for", "qty");
@@ -43,8 +43,7 @@ export function createQtyTxtBox(itemId, itemQty) {
 
     const qtyTxtBox = document.createElement("input");
     qtyTxtBox.setAttribute("type", "text");
-    qtyTxtBox.setAttribute("id", "qty-text-" + itemId);
-    qtyTxtBox.setAttribute("data-qty-id", itemId);
+    qtyTxtBox.setAttribute("id", "qty-item");
     qtyTxtBox.setAttribute("name", "qty");
     qtyTxtBox.value = itemQty;
 
@@ -65,6 +64,11 @@ export function addItemToCart(itemId, qty) {
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
+export function getSelectedItemId(){
+    const item = localStorage.getItem("selectedItem");
+    return parseInt(item);
+}
+
 export function getCartItems() {
     let cart = [];
     const cartstr = localStorage.getItem("cart");
@@ -72,16 +76,16 @@ export function getCartItems() {
     return cart;
 }
 
-export function addItemtoCartEvent(qtyTxtBox) {
-    const qtyEl = document.getElementById(qtyTxtBox);
+export function addItemtoCartEvent() {
+    const qtyEl = document.getElementById("qty-item");
     const qty = parseInt(qtyEl.value);
-    const qtyId = parseInt(qtyEl.getAttribute("data-qty-id"));
+    const itemId = getSelectedItemId();
 
     let cart = getCartItems();
     let updatedCart = false
 
     for (let i=0; i<cart.length; i++){
-        if(cart[i].itemId === qtyId){
+        if(cart[i].itemId === itemId){
             updatedCart = true;
             cart[i].qty += qty;
             localStorage.setItem("cart", JSON.stringify(cart));
@@ -91,7 +95,7 @@ export function addItemtoCartEvent(qtyTxtBox) {
         }  
     }
     if(updatedCart === false){
-        addItemToCart(qtyId, qty);
+        addItemToCart(itemId, qty);
         if(confirm("added item to cart\ndo you want to checkout now?")) {
             openPage("/cart.html");
         } else location.reload();

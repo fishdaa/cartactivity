@@ -54,8 +54,11 @@ a {
 button {
     background-color: orange;
     color: black;
+    border: none;
+    margin: 1px;
 }
 
 button:hover {
-    background-color: white;
+    background-color: rgb(255, 210, 128);
+    cursor: pointer;
 }

@@ -42,6 +42,8 @@ a {
     margin-top: 1em;
     margin-bottom: 1em;
     padding: 1em;
+    border: none;
+    font: inherit;
 }
 
 #view-back {
@@ -49,5 +51,36 @@ a {
     background-color: orange;
     padding: .5em;
     border-radius: 3px;
-    margin: 10%;
+    margin: 20%;
+}
+table td {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break:break-word;
+    padding: .5rem;
+}
+table th {
+    padding: .5rem;
+}
+
+table {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    table-layout: fixed;
+    width: 100%;
+}
+
+#prod-details {
+    display: flex;
+}
+
+#prod-details > * {
+    align-self: center;
+    align-content: center;
+    padding: 1em;
+    margin: 2em;
+}
+
+button:hover {
+    cursor: pointer;
 }
